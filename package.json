@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://nicollasszr.github.io/FocusFlow-",
+  "homepage": "https://nicollasszr.github.io/FocusFlow",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
