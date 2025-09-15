@@ -10,7 +10,7 @@ interface Task{
 
 interface Props{
     taskList: Task[];
-    deleteTask: Function;
+    deleteTask: (id: number) => void;
 }
 
 function PostTasks(props: Props){

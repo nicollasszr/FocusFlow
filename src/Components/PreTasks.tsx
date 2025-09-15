@@ -11,7 +11,7 @@ interface Task{
 interface Props{
     taskList: Task[];
     showForm: Function;
-    deleteTask: Function;
+    deleteTask: (id: number) => void;
 }
 
 function PreTasks(props: Props){
