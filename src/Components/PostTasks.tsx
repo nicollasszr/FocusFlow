@@ -9,7 +9,8 @@ interface Task{
 }
 
 interface Props{
-    taskList: Task[]
+    taskList: Task[];
+    deleteTask: Function;
 }
 
 function PostTasks(props: Props){
@@ -19,7 +20,7 @@ function PostTasks(props: Props){
         <div className="post-tasks">
             <h1>Tarefas Finalizadas</h1>
 
-            <TaskList taskList={props.taskList}/>
+            <TaskList taskList={props.taskList} deleteTask={props.deleteTask}/>
         </div>
 
     )
