@@ -53,7 +53,7 @@ function App() {
 
       { showFormConfirm? <FormConfirmNext setShowConfirmNext={setShowFormConfirm} task={taskList[0]} setTaskList={setTaskList} setDoneTaskList={setDoneTaskList}/> : ""}
 
-      <PostTasks taskList={doneTaskList}/>
+      <PostTasks taskList={doneTaskList} deleteTask={deleteTask}/>
     </div>
     </>
   )
