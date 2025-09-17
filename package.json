@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
   "name": "focusflow",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://nicollasszr.github.io/FocusFlow-",
+=======
+  "name": "FocusFlow",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "homepage": "https://nicollasszr.github.io/FocusFlow",
+>>>>>>> 68114cec74d0b167b92367977b7526e80062d8e0
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
