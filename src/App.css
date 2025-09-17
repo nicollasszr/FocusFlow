@@ -1,0 +1,99 @@
+:root {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --kanban-blue: #2a73cc;
+  --kanban-yellow: #f5c542;
+  --kanban-green: #4caf50;
+  --card-background: #1e1e1e;
+  --button-background: #2a2a2a;
+  --button-hover: #3a3a3a;
+  --border-radius: 8px;
+}
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.col-1, .col-2, .col-3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  height: 100%;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: var(--button-background);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover);
+}
+
+progress {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+  background-color: #333;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #333;
+  border-radius: var(--border-radius);
+}
+
+progress::-webkit-progress-value {
+  background-color: var(--kanban-green);
+  border-radius: var(--border-radius);
+  transition: width 0.3s ease;
+}
+
+progress::-moz-progress-bar {
+  background-color: var(--kanban-green);
+  border-radius: var(--border-radius);
+}
+
+.modal-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-form h1, .modal-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
