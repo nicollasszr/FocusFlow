@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 type status =  1 | 2 | 3
 
-type CardData = {id: number, title: string, description: string, time: string | null, status: status}
+type CardData = {id: number, title: string, description: string, time: number | null, status: status}
 
 interface ContextType {
   cards: CardData[];
