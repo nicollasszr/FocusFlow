@@ -1,0 +1,106 @@
+/* Card.css */
+
+.card {
+    /* Propriedades Visuais */
+    background-color: var(--card-background, #fff);
+    border: 1px solid var(--card-border, #ddd);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: 0.4s ease-in-out;
+
+    height: auto;
+    width: auto;
+
+    max-height: 100px; /* Altura padrão VISÍVEL */
+    max-width: 450px;
+    overflow-y: hidden; /* ESCONDE o conteúdo que exceder 150px */
+    overflow-x: hidden; /* Garante que não haja scroll horizontal */
+    overflow-wrap: break-word;
+}
+
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    height: auto;
+    width: auto;
+    max-height: 90vh;
+    max-width: 40vh;
+    
+    overflow-y: auto; 
+    overflow-x: auto; 
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-header h2 {
+    font-size: 1.1em;
+    margin: 0;
+    color: var(--heading-color, #333);
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-header-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+.card-header-inputs button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--icon-color, #666);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+/* Cores específicas para ícones */
+.card-header-inputs button:hover {
+    color: var(--primary-color, #007bff);
+}
+
+/* Botão "Terminar" */
+.card-header-inputs button:last-child {
+    background-color: var(--success-color, green);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+.card-header-inputs button:last-child:hover {
+    background-color: var(--success-hover, darkgreen);
+    color: white;
+}
+
+.card hr {
+    border: 0;
+    border-top: 1px solid var(--hr-color, #eee);
+    margin: 10px 0;
+}
+
+.card-info p {
+    margin: 5px 0;
+    color: var(--text-color, #555);
+    font-size: 0.95em;
+}
+
+.card-info p:last-child {
+    /* Estilo para o tempo/data, se houver */
+    font-weight: bold;
+    color: var(--accent-color, #007bff);
+    margin-top: 10px;
+}

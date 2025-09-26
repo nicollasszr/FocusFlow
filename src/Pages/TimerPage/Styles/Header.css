@@ -1,0 +1,86 @@
+/* Header.css */
+
+header {
+    background-color: var(--header-background, #282c34); /* Fundo escuro */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 300; /* Fonte mais leve */
+}
+
+header h1 span {
+    font-weight: bold; /* Destaque na segunda parte do nome */
+    color: var(--primary-color, #61dafb);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color, #61dafb);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color, #61dafb);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    header h1 {
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Links em coluna */
+        gap: 10px;
+    }
+
+    nav a::after {
+        display: none; /* Remove o underline animado em mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+}
