@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Draggable } from "@hello-pangea/dnd"
 import ExcludeTask from "../Forms/ExcludeTask";
 import EditTask from "../Forms/EditTask";
 import '../Styles/Card.css'
@@ -7,9 +8,11 @@ import UserFinishTask from "../Forms/UserFinishTask";
 
 type status =  1 | 2 | 3
 
-type CardData = {id: number, title: string, description: string, time: number | null, status: status}
+interface CardData{
+    item : { id: number, title: string, description: string, time: number | null, status: status }
+    , index: number}
 
-function Card({item} : {item: CardData}){
+function Card( props: CardData){
 
     const [showDeleteTask, setShowDeleteTask] = useState(false);
     const [showEditTask, setShowEditTask] = useState(false);
@@ -34,16 +37,16 @@ function Card({item} : {item: CardData}){
          <>
             {showDeleteTask ?
             (
-                <ExcludeTask cardId={item.id} setShowForm={setShowDeleteTask} />
+                <ExcludeTask cardId={props.item.id} setShowForm={setShowDeleteTask} />
             )
             :
             showEditTask ?
             (
                 <EditTask
                     data={{
-                        attTitle: item.title,
-                        attDescription: item.description,
-                        cardId: item.id,
+                        attTitle: props.item.title,
+                        attDescription: props.item.description,
+                        cardId: props.item.id,
                         showForm: setShowEditTask,
                     }}
                 />
@@ -51,44 +54,50 @@ function Card({item} : {item: CardData}){
             :
             showFinishTask?
             (
-                <UserFinishTask data={{cardId: item.id, setShowForm: setShowFinishTask}}/>
+                <UserFinishTask data={{cardId: props.item.id, setShowForm: setShowFinishTask}}/>
             )
             :
             (
-                <div className="card">
-                    <div className="card-header">
-                        <h2>{item.title}</h2>
-                        <div className="card-header-inputs">
-                            {item.status === 1?
-                                <>
-                                <button onClick={() => { setShowEditTask(true); }}>
-                                    <FaEdit size={20}/>
-                                </button>
-                                <button onClick={() => { setShowDeleteTask(true); }}>
-                                    <FaTrashAlt size={20}/>
-                                </button>
-                                </>
-                            :
-                            item.status === 2?
-                                <>
-                                <button onClick={() => { setShowDeleteTask(true); }}>
-                                    <FaTrashAlt size={20}/>
-                                </button>
-                                <button onClick={() => { setShowFinishTask(true); }}>Terminar</button>
-                                </>
-                            :
-                                <button onClick={() => { setShowDeleteTask(true); }}>
-                                    <FaTrashAlt size={20}/>
-                                </button>
-                            }
-                        </div>
-                    </div>
-                    <hr></hr>
-                    <div className="card-info">
-                        <p>{item.description}</p>
-                        {item.time? <p>{formatTime(item.time)}</p> : null}
-                    </div>
-                </div>
+                <Draggable draggableId={props.item.id.toString()} index={props.index}>
+
+                    {(provided) => (
+                            <div className="card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                <div className="card-header">
+                                    <h2>{props.item.title}</h2>
+                                    <div className="card-header-inputs">
+                                        {props.item.status === 1?
+                                            <>
+                                            <button onClick={() => { setShowEditTask(true); }}>
+                                                <FaEdit size={20}/>
+                                            </button>
+                                            <button onClick={() => { setShowDeleteTask(true); }}>
+                                                <FaTrashAlt size={20}/>
+                                            </button>
+                                            </>
+                                        :
+                                        props.item.status === 2?
+                                            <>
+                                            <button onClick={() => { setShowDeleteTask(true); }}>
+                                                <FaTrashAlt size={20}/>
+                                            </button>
+                                            <button onClick={() => { setShowFinishTask(true); }}>Terminar</button>
+                                            </>
+                                        :
+                                            <button onClick={() => { setShowDeleteTask(true); }}>
+                                                <FaTrashAlt size={20}/>
+                                            </button>
+                                        }
+                                    </div>
+                                </div>
+                                <hr></hr>
+                                <div className="card-info">
+                                    <p>{props.item.description}</p>
+                                    {props.item.time? <p>{formatTime(props.item.time)}</p> : null}
+                                </div>
+                            </div>
+                    )}
+                
+                </Draggable>
             )}
         </>
     )
