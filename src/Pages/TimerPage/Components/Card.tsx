@@ -6,10 +6,8 @@ import EditTask from "../Forms/EditTask";
 import '../Styles/Card.css'
 import UserFinishTask from "../Forms/UserFinishTask";
 
-type status =  1 | 2 | 3
-
 interface CardData{
-    item : { id: number, title: string, description: string, time: number | null, status: status }
+    item : { id: number, title: string, description: string, time: number | null, status: number }
     , index: number}
 
 function Card( props: CardData){

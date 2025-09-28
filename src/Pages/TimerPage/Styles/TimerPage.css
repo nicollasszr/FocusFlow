@@ -7,34 +7,32 @@
     grid-template-columns: 1fr 1fr 1fr; 
     gap: 25px; 
     padding: 20px;
-    /* ALTERAÇÃO: Aumenta a largura MÁXIMA do container, fazendo com que as sections fiquem mais largas. */
-    max-width: 1400px; 
+    /* Linhas Originais de Dimensionamento */
+    max-width: 1400px; /* Seu max-width original */
     margin: 20px auto; 
     height: 80vh; 
     align-items: start;
 }
 
 .timer-page section {
-    background-color: var(--section-background, #fff);
+    background-color: var(--section-background); /* Única alteração de cor aqui */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     
-    /* Configuração para altura fixa e gerenciamento de overflow */
-    display: flex; /* Permite que o conteúdo interno (h1 e card-list) use flexbox */
+    /* Linhas Originais de Layout */
+    display: flex;
     flex-direction: column;
-    /* Altura fixa (subtraindo o padding da section: 20px superior + 20px inferior) */
     height: 100%; 
-    overflow: hidden; /* Garante que nada saia da section */
+    overflow: hidden;
 }
 
 .timer-page h1 {
-    color: var(--heading-color, #333);
-    border-bottom: 2px solid var(--border-color, #ccc);
+    color: var(--heading-color); /* Variável de Título */
+    border-bottom: 2px solid var(--border-color); /* Variável de Borda/Linha */
     padding-bottom: 10px;
     margin-bottom: 15px;
     font-size: 1.5em;
-    /* Título com tamanho fixo, não scrollável */
     flex-shrink: 0; 
 }
 
@@ -43,78 +41,71 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* Garante que esta coluna não ocupe 100% da altura se não for necessário */
     height: auto; 
-    align-self: stretch; /* Faz com que a coluna ocupe a altura total do grid, mas com o 'height: auto' interno, ela se ajusta. */
+    align-self: stretch;
 }
 
 .timer-column-timer-box {
     display: flex;
     justify-content: center;
     padding: 20px;
-    /* Adiciona flex-shrink: 0 para que a caixa do timer não encolha */
     flex-shrink: 0; 
 }
 
 .timer-column-info-box h1 {
     /* Sobrescreve a cor do título para a caixa de informações do timer */
-    color: var(--primary-color, #007bff);
+    color: var(--primary-color); /* Variável Primária */
 }
 
 /* Botão de Adicionar Nova Tarefa */
 .new-task-button {
     background: none;
     border: none;
-    color: var(--success-color, green);
+    color: var(--success-color); /* Variável de Sucesso */
     cursor: pointer;
     padding: 10px;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; /* Impede que o botão encolha */
+    flex-shrink: 0;
 }
 
 .new-task-button:hover {
-    color: var(--success-hover, darkgreen);
+    color: var(--success-hover); /* Variável de Sucesso Hover */
 }
 
-/* Responsividade */
+/* Responsividade - SEM ALTERAÇÕES DE LAYOUT */
 @media (max-width: 1250px) {
     .timer-page {
-        max-width: 90%; /* Ajuste a largura máxima em telas menores */
+        max-width: 90%;
     }
 }
 
 @media (max-width: 1024px) {
-    /* Transforma em 2 colunas: Timer central e as outras duas agrupadas embaixo */
     .timer-page {
         grid-template-columns: 1fr;
-        height: auto; /* Remove a altura fixa em telas menores para permitir rolagem vertical da página */
+        height: auto;
     }
     
     .timer-column {
-        /* Garante que o timer fique mais visível */
         order: -1; 
         height: auto;
     }
 
     .timer-page section:not(.timer-column) {
-        /* Agrupa Pendentes e Concluídas em telas médias */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
-        height: auto; /* Remove a altura fixa nas sub-seções em layout de duas colunas */
+        height: auto;
     }
     
-    /* Remove as regras de altura fixa e overflow nessas telas */
     .timer-page section {
         height: auto;
     }
 }
 
 @media (max-width: 768px) {
-    /* Em telas muito pequenas, volta para layout de coluna única */
     .timer-page {
         grid-template-columns: 1fr;
         padding: 10px;

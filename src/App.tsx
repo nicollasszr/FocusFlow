@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import Header from "./Pages/TimerPage/Components/Header"
 import TimerPage from "./Pages/TimerPage/TimerPage"
-import SettingsPage from "./Pages/SettingsPage"
+import SettingsPage from "./Pages/SettingsPage/SettingsPage.tsx"
 import MySpacePage from "./Pages/MySpacePage"
 import CardContextProvider from "./Pages/TimerPage/Contexts/CardContext"
 import TimeContextProvider from "./Pages/TimerPage/Contexts/TimeContext"

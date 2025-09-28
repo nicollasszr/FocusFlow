@@ -5,22 +5,227 @@
 
 :root{
 
-    /*Cores*/
-    --bg-main:#ffffff;
-    --bg-secondary: #3a3a3a;
+    --bg-main: #ffffff; /* Fundo principal do body */
+    --main-text: #000000; /* Cor do texto principal */
+    --secondary-text: #555; /* Cor do texto secundário (ex: parágrafos) */
+    --heading-color: #333; /* Cor dos títulos h1, h2, etc. */
+    --border-color: #ccc; /* Cor de bordas e divisores */
+    
+    /* 2. CORES DO HEADER */
+    --header-background: #282c34;
+    --header-text: white; /* Cor do texto e links do header */
+    --logo-accent: #61dafb; /* Cor de destaque (span do logo, hover do link) */
+    
+    /* 3. CORES DE COMPONENTES (CARD, TIMER, FORMS) */
+    --card-background: #fff; /* Fundo de Cards e Formulários */
+    --card-border: #ddd;
+    --section-background: #f7f7f7; /* Fundo das seções (colunas) da página */
+    
+    /* 4. CORES DE AÇÃO (BOTÕES, DESTAQUES) */
+    --primary-color: #007bff; /* Cor primária (Botões de confirmação, ícones) */
+    --primary-hover: #0056b3; 
+    --secondary-button: #ccc; /* Cor de botões secundários (Cancelar) */
+    --secondary-button-hover: #bbb;
 
-    --main-text: #000000;
-    --secondary-text: #ff00bf;
-    --hover-text:#d88415;
+    --success-color: green; /* Cor para sucesso (Botão de terminar Card) */
+    --success-hover: darkgreen;
+    
+    --danger-color: #dc3545; /* Cor para perigo (Excluir) */
+    --danger-hover: #c82333;
+
+    /* 5. CORES AUXILIARES */
+    --input-border: #ccc;
+    --scrollbar-thumb: #ccc;
+    --scrollbar-thumb-hover: #999;
+}
+
+.dark{
+    /* 1. CORES BASE */
+    --bg-main: #121212; /* Fundo principal preto/muito escuro */
+    --main-text: #F8F4EF; /* Texto claro */
+    --secondary-text: #A0A0A0;
+    --heading-color: #F0F0F0;
+    --border-color: #333333;
+    
+    /* 2. CORES DO HEADER */
+    --header-background: #1F1F1F;
+    --header-text: #FFFFFF;
+    --logo-accent: #BB86FC; /* Toque de roxo/magenta moderno */
+    
+    /* 3. CORES DE COMPONENTES */
+    --card-background: #1E1E1E;
+    --card-border: #3A3A3A;
+    --section-background: #242424;
+    
+    /* 4. CORES DE AÇÃO */
+    --primary-color: #BB86FC; 
+    --primary-hover: #985DDC; 
+    --secondary-button: #444444; 
+    --secondary-button-hover: #555555;
+
+    --success-color: #03DAC6; /* Ciano para contraste */
+    --success-hover: #01A299;
+    
+    --danger-color: #CF6679;
+    --danger-hover: #B00020;
+
+    /* 5. CORES AUXILIARES */
+    --input-border: #555555;
+    --scrollbar-thumb: #555555;
+    --scrollbar-thumb-hover: #777777;
+}
+
+.blue{
+    /* 1. CORES BASE */
+    --bg-main: #0E172A; /* Azul marinho muito escuro */
+    --main-text: #F8F4EF;
+    --secondary-text: #94A3B8;
+    --heading-color: #F8FAFC;
+    --border-color: #1E293B;
+    
+    /* 2. CORES DO HEADER */
+    --header-background: #0F253F;
+    --header-text: #FFFFFF;
+    --logo-accent: #06B6D4; /* Ciano de destaque */
+    
+    /* 3. CORES DE COMPONENTES */
+    --card-background: #1E293B;
+    --card-border: #334155;
+    --section-background: #152238;
+    
+    /* 4. CORES DE AÇÃO */
+    --primary-color: #06B6D4; 
+    --primary-hover: #0891B2; 
+    --secondary-button: #475569; 
+    --secondary-button-hover: #64748B;
+
+    --success-color: #10B981;
+    --success-hover: #059669;
+    
+    --danger-color: #EF4444;
+    --danger-hover: #DC2626;
+
+    /* 5. CORES AUXILIARES */
+    --input-border: #334155;
+    --scrollbar-thumb: #334155;
+    --scrollbar-thumb-hover: #475569;
+}
+
+.terracotta{
+    /* 1. CORES BASE */
+    --bg-main: #2C211F; /* Marrom escuro quase preto */
+    --main-text: #F8F4EF;
+    --secondary-text: #D4C1AE;
+    --heading-color: #FCEFD5;
+    --border-color: #4A3733;
+    
+    /* 2. CORES DO HEADER */
+    --header-background: #3B2D2B;
+    --header-text: #FCEFD5;
+    --logo-accent: #FF7043; /* Laranja Pêssego */
+    
+    /* 3. CORES DE COMPONENTES */
+    --card-background: #362927;
+    --card-border: #52403B;
+    --section-background: #2C211F;
+    
+    /* 4. CORES DE AÇÃO */
+    --primary-color: #FF7043; 
+    --primary-hover: #F4511E; 
+    --secondary-button: #5E4B49; 
+    --secondary-button-hover: #756360;
+
+    --success-color: #4CAF50;
+    --success-hover: #388E3C;
+    
+    --danger-color: #D32F2F;
+    --danger-hover: #B71C1C;
+
+    /* 5. CORES AUXILIARES */
+    --input-border: #52403B;
+    --scrollbar-thumb: #52403B;
+    --scrollbar-thumb-hover: #6D5B57;
+}
+
+.forest{
+    /* 1. CORES BASE */
+    --bg-main: #182318; /* Verde musgo escuro */
+    --main-text: #F8F4EF;
+    --secondary-text: #A7B8A0;
+    --heading-color: #FFFFFF;
+    --border-color: #384F38;
+    
+    /* 2. CORES DO HEADER */
+    --header-background: #1F2C1F;
+    --header-text: #FFFFFF;
+    --logo-accent: #FFEE58; /* Amarelo dourado de destaque */
+    
+    /* 3. CORES DE COMPONENTES */
+    --card-background: #212E21;
+    --card-border: #445E44;
+    --section-background: #1E291E;
+    
+    /* 4. CORES DE AÇÃO */
+    --primary-color: #d1bc00; 
+    --primary-hover: #FFEB3B; 
+    --secondary-button: #5A705A; 
+    --secondary-button-hover: #728A72;
+
+    --success-color: #66BB6A;
+    --success-hover: #43A047;
+    
+    --danger-color: #D84315;
+    --danger-hover: #BF360C;
+
+    /* 5. CORES AUXILIARES */
+    --input-border: #445E44;
+    --scrollbar-thumb: #445E44;
+    --scrollbar-thumb-hover: #5A705A;
+}
+
+.beige {
+    /* 1. CORES BASE */
+    --bg-main: #2E2823; /* Marrom acinzentado escuro */
+    --main-text: #F8F4EF;
+    --secondary-text: #C3B8AC;
+    --heading-color: #F8F4EF;
+    --border-color: #5C524A;
+    
+    /* 2. CORES DO HEADER */
+    --header-background: #3B342F;
+    --header-text: #F8F4EF;
+    --logo-accent: #FBC02D; /* Amarelo ouro suave */
+    
+    /* 3. CORES DE COMPONENTES */
+    --card-background: #3A332C;
+    --card-border: #6D645E;
+    --section-background: #332E27;
+    
+    /* 4. CORES DE AÇÃO */
+    --primary-color: #FBC02D; 
+    --primary-hover: #F9A825; 
+    --secondary-button: #6D645E; 
+    --secondary-button-hover: #837A74;
+
+    --success-color: #689F38;
+    --success-hover: #558B2F;
+    
+    --danger-color: #E64A19;
+    --danger-hover: #D84315;
+
+    /* 5. CORES AUXILIARES */
+    --input-border: #6D645E;
+    --scrollbar-thumb: #6D645E;
+    --scrollbar-thumb-hover: #837A74;
 }
 
 body{
     background-color: var(--bg-main);
     color: var(--main-text);
-    font-family: 'Funnel Display', sans-serif;
-
+    /* Mantive a fonte 'Funnel Display' que você tinha */
+    font-family: 'Funnel Display', sans-serif; 
+    transition: background-color 0.3s, color 0.3s;
 }
-
 
 ul{
     list-style-type: none;

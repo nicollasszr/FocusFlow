@@ -1,26 +1,26 @@
-/* Forms.css */
+/* Forms.css - Reescrevendo com Variáveis */
 
 form {
-    background-color: var(--form-background, #fff);
+    background-color: var(--card-background);
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Mantido shadow preto */
     display: flex;
     flex-direction: column;
     gap: 15px;
     max-width: 400px;
-    margin: 20px auto; /* Centraliza o formulário */
+    margin: 20px auto;
 }
 
 form h1 {
     font-size: 1.5em;
-    color: var(--primary-color, #333);
+    color: var(--primary-color);
     margin-bottom: 10px;
     text-align: center;
 }
 
 form p {
-    color: var(--text-color, #555);
+    color: var(--secondary-text);
     text-align: center;
 }
 
@@ -32,26 +32,26 @@ form .inputs {
 
 form label {
     font-weight: bold;
-    color: var(--label-color, #555);
+    color: var(--secondary-text);
     margin-top: 5px;
 }
 
 form input[type="text"] {
     padding: 10px;
-    border: 1px solid var(--input-border, #ccc);
+    border: 1px solid var(--input-border);
     border-radius: 4px;
     font-size: 1em;
     transition: border-color 0.3s ease;
 }
 
 form input[type="text"]:focus {
-    border-color: var(--primary-color, #007bff);
+    border-color: var(--primary-color);
     outline: none;
 }
 
 form > div:last-child {
     display: flex;
-    justify-content: flex-end; /* Alinha os botões à direita */
+    justify-content: flex-end;
     gap: 15px;
     margin-top: 15px;
 }
@@ -68,32 +68,32 @@ form button {
 
 /* Botão Cancelar/Secundário */
 form button[type="button"]:first-child {
-    background-color: var(--secondary-button, #ccc);
-    color: var(--secondary-text, #333);
+    background-color: var(--secondary-button);
+    color: var(--heading-color); /* Usando heading-color pois é preto/escuro */
 }
 
 form button[type="button"]:first-child:hover {
-    background-color: var(--secondary-button-hover, #bbb);
+    background-color: var(--secondary-button-hover);
 }
 
 /* Botão Adicionar/Confirmar/Primário */
 form button[type="button"]:last-child {
-    background-color: var(--primary-color, #007bff);
-    color: white;
+    background-color: var(--primary-color);
+    color: white; /* Mantido white pois a primary-color é para o fundo do botão */
 }
 /* No caso do ExcludeTask, o último botão deve ser de perigo/vermelho */
 form h1:contains("Tem certeza?") + p + div button[type="button"]:last-child {
-    background-color: var(--danger-color, #dc3545);
+    background-color: var(--danger-color);
 }
 form h1:contains("Tem certeza?") + p + div button[type="button"]:last-child:hover {
-    background-color: var(--danger-hover, #c82333);
+    background-color: var(--danger-hover);
 }
 
 form button[type="button"]:last-child:hover {
-    background-color: var(--primary-hover, #0056b3);
+    background-color: var(--primary-hover);
 }
 
-/* Responsividade: Formulário em tela cheia em dispositivos pequenos */
+/* Responsividade - Sem alterações de cor */
 @media (max-width: 600px) {
     form {
         margin: 0;

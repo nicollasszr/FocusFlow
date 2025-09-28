@@ -11,7 +11,7 @@ function FinishTask({setShowForm} : {setShowForm : Function}){
     
     const Context = useContext(TimeContext);
     if (!Context){return;}
-    const {passedTime, setTimeRemaining, setIsRunning} = Context;
+    const {passedTime, setPassedTime, setTimeRemaining, setIsRunning} = Context;
 
     const currentCard = cards.filter((elemento) => (elemento.status === 2));
 
@@ -32,7 +32,7 @@ function FinishTask({setShowForm} : {setShowForm : Function}){
             <p>A tarefa foi finalizada?</p>
             <div>
                 <button type="button" onClick={() => {setShowForm(false); setTimeRemaining(900); setIsRunning(true)}}>Ainda não</button>
-                <button type="button" onClick={() => {setCards(updatedCards); setTimeRemaining(3600); setShowForm(false)}}>Sim</button>
+                <button type="button" onClick={() => {setCards(updatedCards); setTimeRemaining(3600); setShowForm(false); setPassedTime(0)}}>Sim</button>
             </div>
         </form>
     )

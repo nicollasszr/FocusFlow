@@ -24,10 +24,10 @@ function CountdownTimer({ data } : { data : DataTimer}) {
         }, 1000);
     } else if (timeRemaining === 0) {
         if(isRunning){
-            data.setShowForm(true)
+            data.setShowForm(true);
         }                                                          //Se não tiver mais tempo ele vai parar
         setIsRunning(false);
-        
+         
     }
 
     return () => {clearInterval(timerId)};               //Se não entrar nos de cima ele vai resetar o interval
@@ -38,6 +38,7 @@ function CountdownTimer({ data } : { data : DataTimer}) {
     const resetTimer = () => {
     setIsRunning(false);
     setTimeRemaining(3600);
+    setPassedTime(0);
     };
 
     /*Formatação do tempo*/

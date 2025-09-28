@@ -1,24 +1,24 @@
-/* Header.css */
+/* Header.css - Reescrevendo com Variáveis */
 
 header {
-    background-color: var(--header-background, #282c34); /* Fundo escuro */
-    color: white;
+    background-color: var(--header-background);
+    color: var(--header-text);
     padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Mantive o shadow preto por ser um efeito de profundidade universal */
 }
 
 header h1 {
     font-size: 1.8em;
     margin: 0;
-    font-weight: 300; /* Fonte mais leve */
+    font-weight: 300;
 }
 
 header h1 span {
-    font-weight: bold; /* Destaque na segunda parte do nome */
-    color: var(--primary-color, #61dafb);
+    font-weight: bold;
+    color: var(--logo-accent);
 }
 
 nav ul {
@@ -30,7 +30,7 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: var(--header-text);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -45,19 +45,19 @@ nav a::after {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--primary-color, #61dafb);
+    background-color: var(--logo-accent);
     transition: width 0.3s ease;
 }
 
 nav a:hover {
-    color: var(--primary-color, #61dafb);
+    color: var(--logo-accent);
 }
 
 nav a:hover::after {
     width: 100%;
 }
 
-/* Responsividade */
+/* Responsividade - Sem alterações de cor */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -70,12 +70,12 @@ nav a:hover::after {
     }
 
     nav ul {
-        flex-direction: column; /* Links em coluna */
+        flex-direction: column;
         gap: 10px;
     }
 
     nav a::after {
-        display: none; /* Remove o underline animado em mobile */
+        display: none;
     }
 }
 
