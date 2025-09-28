@@ -18,8 +18,8 @@ main select{
     justify-content: center;
     align-items: center;
     padding: 0.4em;
-}
 
-main select span{
-    background-color: red;
+    border: none;
+    background-color: #ccc;
+    border-radius: 5px;
 }

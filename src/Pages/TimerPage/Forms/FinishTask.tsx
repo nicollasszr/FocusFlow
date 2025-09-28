@@ -32,7 +32,7 @@ function FinishTask({setShowForm} : {setShowForm : Function}){
             <p>A tarefa foi finalizada?</p>
             <div>
                 <button type="button" onClick={() => {setShowForm(false); setTimeRemaining(900); setIsRunning(true)}}>Ainda não</button>
-                <button type="button" onClick={() => {setCards(updatedCards); setTimeRemaining(3600); setShowForm(false); setPassedTime(0)}}>Sim</button>
+                <button type="button" onClick={() => {setCards(updatedCards); setTimeRemaining(3600); setShowForm(false); setPassedTime(0); document.title = "FocusFlow | Deixe seu foco fluir"}}>Sim</button>
             </div>
         </form>
     )

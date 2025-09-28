@@ -20,7 +20,8 @@ function CountdownTimer({ data } : { data : DataTimer}) {
     if (isRunning && timeRemaining > 0) {              //Verifica se está ativado e tem tempo pra correr
         timerId = setInterval(() => {                    //Cria o setInterval
         setTimeRemaining((prevTime: number) => prevTime - 1);
-        setPassedTime((prevTime: number) => prevTime + 1)         //Vai diminuir o tempo restante em 1 a cada segundo
+        setPassedTime((prevTime: number) => prevTime + 1)  
+        document.title = formatTime(timeRemaining-1)
         }, 1000);
     } else if (timeRemaining === 0) {
         if(isRunning){
@@ -39,6 +40,7 @@ function CountdownTimer({ data } : { data : DataTimer}) {
     setIsRunning(false);
     setTimeRemaining(3600);
     setPassedTime(0);
+    document.title = "FocusFlow | Deixe seu foco fluir"
     };
 
     /*Formatação do tempo*/
