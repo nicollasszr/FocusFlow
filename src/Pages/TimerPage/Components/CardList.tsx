@@ -4,6 +4,9 @@ import { DragDropContext, Droppable} from "@hello-pangea/dnd"
 import Card from "./Card";
 import '../Styles/CardList.css'
 
+//+===Funções===+
+
+//Função que reorganiza a lista após a ação de drag and drop
 function reOrder<T>(list: T[], startIndex: number, endIndex: number){
     const result = Array.from(list);
 
@@ -17,30 +20,35 @@ function reOrder<T>(list: T[], startIndex: number, endIndex: number){
 
 function CardList({ requiredId} : {requiredId : number}){
     
+    //+===Context===+
+
     const context = useContext(CardContext);
-    
-    if (!context){return}
-    
+    if (!context){return;}
     const { cards, setCards } = context;
     
-        function onDragEnd(result: any){
+    //+===Funções===+
+
+    //Reorganiza a lista após o drag and drop
+    function onDragEnd(result: any){
+    
+        if (!result.destination){return;}
         
-            if (!result.destination){return;}
-            
-            const currentFilteredCards = cards.filter((element) => element.status === requiredId);
+        const currentFilteredCards = cards.filter((element) => element.status === requiredId);
 
-            const reorderedFilteredCards = reOrder(
-                currentFilteredCards, 
-                result.source.index, 
-                result.destination.index
-            );
+        const reorderedFilteredCards = reOrder(
+            currentFilteredCards, 
+            result.source.index, 
+            result.destination.index
+        );
 
-            const newCards = cards
-                .filter(element => element.status !== requiredId)
-                .concat(reorderedFilteredCards);
-            
-            setCards(newCards);
-        }
+        const newCards = cards
+            .filter(element => element.status !== requiredId)
+            .concat(reorderedFilteredCards);
+        
+        setCards(newCards);
+    }
+
+    //+===Componente===+
 
     return(
 

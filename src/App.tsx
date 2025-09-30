@@ -5,6 +5,7 @@ import SettingsPage from "./Pages/SettingsPage/SettingsPage.tsx"
 import MySpacePage from "./Pages/MySpacePage"
 import CardContextProvider from "./Pages/TimerPage/Contexts/CardContext"
 import TimeContextProvider from "./Pages/TimerPage/Contexts/TimeContext"
+import PomodoroContextProvider from "./Pages/SettingsPage/Contexts/PomodoroContext.tsx"
 
 function App() {
 
@@ -15,12 +16,14 @@ function App() {
 
       <CardContextProvider>
         <TimeContextProvider>
-          <Routes>
-            <Route path="/" element={<Navigate to="/timer" />} />
-            <Route path="/timer" element={<TimerPage/>}/>
-            <Route path="/settings" element={<SettingsPage/>}/>
-            <Route path="/my-space" element={<MySpacePage/>}/>
-          </Routes>
+          <PomodoroContextProvider>
+            <Routes>
+              <Route path="/" element={<Navigate to="/timer" />} />
+              <Route path="/timer" element={<TimerPage/>}/>
+              <Route path="/settings" element={<SettingsPage/>}/>
+              <Route path="/my-space" element={<MySpacePage/>}/>
+            </Routes>
+          </PomodoroContextProvider>
         </TimeContextProvider>
       </CardContextProvider>
     </>

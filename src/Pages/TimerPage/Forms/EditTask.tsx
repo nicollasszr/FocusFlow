@@ -6,13 +6,18 @@ type Data = { attTitle: string, attDescription: string, cardId: string | number,
 
 function EditTask({ data }: { data: Data }) {
 
+    //+===Estados===+
+
     const [title, setTitle] = useState(data.attTitle);
     const [description, setDescription] = useState(data.attDescription);
 
+    //+===Contexto===+
+
     const context = useContext(CardContext);
     if (!context) {return;}
-
     const { cards, setCards } = context;
+
+    //+===Componente===+
 
     return (
 

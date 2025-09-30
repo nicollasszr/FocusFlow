@@ -16,7 +16,7 @@ function TimeContextProvider({children} : {children : ReactNode}){
 
     const [isRunning, setIsRunning] = useState(false);
     const [passedTime, setPassedTime] = useState(0);
-    const [timeRemaining, setTimeRemaining] = useState(3600)
+    const [timeRemaining, setTimeRemaining] = useState(1500)
 
     return(
         <TimeContext.Provider value={{isRunning, setIsRunning, passedTime, setPassedTime, timeRemaining, setTimeRemaining}}>

@@ -1,38 +1,37 @@
-import { useContext } from "react"; // <--- Importe useContext
-import { CardContext } from "../Contexts/CardContext"; // <--- Importe o Contexto
+import { useContext } from "react";
+import { CardContext } from "../Contexts/CardContext";
 
 interface Data{
-    // Mude status para cardId
     cardId: number; 
     setShowForm: Function;
 }
 
 function UserFinishTask({data} : {data: Data}){
 
+    //+===Contexto===+
+
+    //Contexto de manipulação da lista de cards
     const context = useContext(CardContext);
-
-    // Se o contexto não existir, não faça nada (proteção)
-    if (!context) { return null; } 
-
+    if (!context){return;} 
     const { cards, setCards } = context;
 
-    const handleFinish = () => {
-        
-        // 1. Crie um NOVO array com o card modificado
-        const novaListaDeCards = cards.map(card => {
-            if (card.id === data.cardId) {
-                // 2. Retorna um NOVO objeto card com o status 3
-                return { ...card, status: 3 }; 
-            }
-            return card;
-        });
+    //+===Funções===+
 
-        // 3. Atualize o estado global
-        setCards(novaListaDeCards);
-        
-        // 4. Feche o formulário
-        data.setShowForm(false);
-    }
+    //Pega o card correto (Com status 2)
+    const currentCard = cards.filter((elemento) => (elemento.status === 2));
+
+    //Recria a lista de cards mas alterando o status do card atual
+    const updatedCards = cards.map((card) =>{
+        if (currentCard[0].id === card.id){
+            return{
+                ...card,
+                status: 3,
+            }
+        }
+        return card;
+    })
+
+    //+===Componente===+
 
     return(
         <form>
@@ -40,7 +39,7 @@ function UserFinishTask({data} : {data: Data}){
             <p>Esta ação irá terminar a tarefa imediatamente</p>
             <div>
                 <button type="button" onClick={() => {data.setShowForm(false)}}>Cancelar</button>
-                <button type="button" onClick={handleFinish}>Confirmar</button>
+                <button type="button" onClick={() => {setCards(updatedCards)}}>Confirmar</button>
             </div>
         </form>
     )

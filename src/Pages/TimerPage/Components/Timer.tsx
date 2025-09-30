@@ -9,16 +9,21 @@ interface DataTimer{
 
 function CountdownTimer({ data } : { data : DataTimer}) {
 
-    const context = useContext(TimeContext);
-    if (!context){return;}
-    const { isRunning, setIsRunning, setPassedTime, timeRemaining, setTimeRemaining } = context;
+    //+===Contexto===+
 
-    /*UseEffect que faz a magia acontecer*/
+    //Contexto de manipulação do timer
+    const Timecontext = useContext(TimeContext);
+    if (!Timecontext){return;}
+    const { isRunning, setIsRunning, setPassedTime, timeRemaining, setTimeRemaining } = Timecontext;
+
+    //+===Efeitos===+
+
+    //A cada segundo atualiza os valores internos e exibidos, fazendo o timer funcionar. Quando zera exibe o formulário
     useEffect(() => {
     let timerId: number;
 
-    if (isRunning && timeRemaining > 0) {              //Verifica se está ativado e tem tempo pra correr
-        timerId = setInterval(() => {                    //Cria o setInterval
+    if (isRunning && timeRemaining > 0) {
+        timerId = setInterval(() => {
         setTimeRemaining((prevTime: number) => prevTime - 1);
         setPassedTime((prevTime: number) => prevTime + 1)  
         document.title = formatTime(timeRemaining-1)
@@ -26,24 +31,25 @@ function CountdownTimer({ data } : { data : DataTimer}) {
     } else if (timeRemaining === 0) {
         if(isRunning){
             data.setShowForm(true);
-        }                                                          //Se não tiver mais tempo ele vai parar
+        }
         setIsRunning(false);
          
     }
 
-    return () => {clearInterval(timerId)};               //Se não entrar nos de cima ele vai resetar o interval
-    }, [isRunning, timeRemaining]);                      //Dependências pra rodar, se está ativo e se tem tempo
+    return () => {clearInterval(timerId)};               
+    }, [isRunning, timeRemaining]);                      
 
+    //+===Funções===+
 
-    /*Função pra resetar o timer*/
+    //Reseta o tempo interno e exibido e faz o título da janela voltar ao padrão
     const resetTimer = () => {
     setIsRunning(false);
-    setTimeRemaining(3600);
+    setTimeRemaining(1500);
     setPassedTime(0);
     document.title = "FocusFlow | Deixe seu foco fluir"
     };
 
-    /*Formatação do tempo*/
+    //Altera o tempo interno para a formatação padrão para exibir
     const formatTime = (seconds: number) => {
         const hours = Math.floor(seconds / 3600);
         const minutes = Math.floor((seconds % 3600) / 60);       
@@ -52,9 +58,13 @@ function CountdownTimer({ data } : { data : DataTimer}) {
         return `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
     };
 
+    //Valores para exibir no input
     const hours = Math.floor(timeRemaining / 3600);
     const minutes = Math.floor((timeRemaining % 3600) / 60);       
     const remainingSeconds = timeRemaining % 60;    
+
+    //+===Componente===+
+
     return (
    
     <div className="timer">

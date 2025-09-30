@@ -10,9 +10,14 @@ interface Data{
 
 function ExcludeTask( {cardId, setShowForm}: Data){
 
+    //+===Contexto===+
+
+    //Contexto de manipulação da lista de cards
     const context = useContext(CardContext);
     if (!context) {return};
     const { cards, setCards } = context;
+
+    //+===Componente===+
 
     return(
 

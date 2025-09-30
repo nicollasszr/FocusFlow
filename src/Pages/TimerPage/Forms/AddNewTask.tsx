@@ -7,15 +7,23 @@ type Data = { showForm: Function}
 
 function AddNewTask({showForm} : Data){
 
-    const context = useContext(CardContext);
-    if (!context){return}
-
-    const { cards, setCards } = context;
+    //+===Estados===+
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
+    //+===Contexto===+
+    const context = useContext(CardContext);
+    if (!context){return}
+    const { cards, setCards } = context;
+
+    //+===Funções===+
+
+    //Função nativa que gera um id aleatório
     const newId = crypto.randomUUID();
+
+    //+===Componente===+
+    
     return(
 
         <form>

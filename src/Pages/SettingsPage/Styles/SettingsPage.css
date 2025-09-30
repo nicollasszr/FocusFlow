@@ -23,3 +23,17 @@ main select{
     background-color: #ccc;
     border-radius: 5px;
 }
+
+main hr{
+    width: 99%;
+    border-color: var(--main-text);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+main a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--main-text);
+}

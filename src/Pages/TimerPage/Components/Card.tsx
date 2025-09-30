@@ -12,11 +12,15 @@ interface CardData{
 
 function Card( props: CardData){
 
+    //+===Estado===+
+
     const [showDeleteTask, setShowDeleteTask] = useState(false);
     const [showEditTask, setShowEditTask] = useState(false);
     const [showFinishTask, setShowFinishTask] = useState(false);
 
+    //+===Funções===+
 
+    //Formata o tempo para ser exibido no card
     const formatTime = (seconds: number) => {
         if (seconds > 59){
             const hours = Math.floor(seconds / 3600);
@@ -29,6 +33,8 @@ function Card( props: CardData){
             return `${seconds}s`
         }
     };
+
+    //+===Componente===+
 
     return(
 
