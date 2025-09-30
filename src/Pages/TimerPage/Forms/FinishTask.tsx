@@ -21,7 +21,7 @@ function FinishTask({setShowForm} : {setShowForm : Function}){
     //Contexto de manipulação das pausas
     const Pomodorocontext = useContext(PomodoroContext);
     if (!Pomodorocontext){return;}
-    const { setPhase, cycleCount, setCycleCount} = Pomodorocontext;
+    const { setPhase, cycleCount, setCycleCount, focusTime, shortBreakTime, longBreakTime} = Pomodorocontext;
 
     //+===Funções===+
 
@@ -51,10 +51,10 @@ function FinishTask({setShowForm} : {setShowForm : Function}){
 
         if (cycleCount === 4) { 
             setPhase('longBreak');
-            setTimeRemaining(900); // 15 minutos
+            setTimeRemaining(longBreakTime); // 15 minutos
         } else {
             setPhase('shortBreak');
-            setTimeRemaining(300); // 5 minutos
+            setTimeRemaining(shortBreakTime); // 5 minutos
         }
         
         setIsRunning(false); 
@@ -66,7 +66,7 @@ function FinishTask({setShowForm} : {setShowForm : Function}){
         setCycleCount(nextCycleCount);
 
         setPhase('focus');
-        setTimeRemaining(1500);
+        setTimeRemaining(focusTime);
         
         setIsRunning(true);
     };

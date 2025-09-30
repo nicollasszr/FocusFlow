@@ -1,3 +1,4 @@
+import PomodoroSelect from "./Components/PomodoroSelect";
 import ThemeSelect from "./Components/ThemeSelect";
 import './Styles/SettingsPage.css'
 import { FaGithub } from "react-icons/fa";
@@ -12,7 +13,7 @@ function SettingsPage(){
                 <ThemeSelect />
             <hr/>
                 <h2>Pomodoro</h2>
-                <p>Pausas</p>
+                <PomodoroSelect />
             <hr/>
                 <h2>Projeto</h2>
                 <h3><a href="https://github.com/nicollasszr/FocusFlow" target="blank"><FaGithub size={30}/> - GitHub</a></h3>

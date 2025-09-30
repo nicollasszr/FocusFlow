@@ -2,6 +2,7 @@ import  { useEffect, useContext } from 'react';
 import { FaPlay, FaPause, FaSquare  } from "react-icons/fa";
 import '../Styles/Timer.css'
 import { TimeContext } from '../Contexts/TimeContext';
+import { PomodoroContext } from '../../SettingsPage/Contexts/PomodoroContext';
 
 interface DataTimer{
     setShowForm: Function;
@@ -15,6 +16,10 @@ function CountdownTimer({ data } : { data : DataTimer}) {
     const Timecontext = useContext(TimeContext);
     if (!Timecontext){return;}
     const { isRunning, setIsRunning, setPassedTime, timeRemaining, setTimeRemaining } = Timecontext;
+
+    const Pomodorocontext = useContext(PomodoroContext);
+    if (!Pomodorocontext){return;}
+    const { phase, setPhase, focusTime } = Pomodorocontext;
 
     //+===Efeitos===+
 
@@ -30,21 +35,26 @@ function CountdownTimer({ data } : { data : DataTimer}) {
         }, 1000);
     } else if (timeRemaining === 0) {
         if(isRunning){
-            data.setShowForm(true);
-        }
-        setIsRunning(false);
+            if (phase === 'focus') {
+                 data.setShowForm(true); 
+            } else {
+                setPhase('focus');
+                setTimeRemaining(focusTime);
+            }
+        }                                                          
+        setIsRunning(false); 
          
     }
 
     return () => {clearInterval(timerId)};               
-    }, [isRunning, timeRemaining]);                      
+    }, [isRunning, timeRemaining, phase, focusTime, setPhase, data.setShowForm]);                      
 
     //+===Funções===+
 
     //Reseta o tempo interno e exibido e faz o título da janela voltar ao padrão
     const resetTimer = () => {
     setIsRunning(false);
-    setTimeRemaining(1500);
+    setTimeRemaining(focusTime);
     setPassedTime(0);
     document.title = "FocusFlow | Deixe seu foco fluir"
     };
@@ -68,6 +78,7 @@ function CountdownTimer({ data } : { data : DataTimer}) {
     return (
    
     <div className="timer">
+        {phase === 'shortBreak' || phase === 'longBreak' ? <h4>Pausa</h4> : null}
         <h1>{formatTime(timeRemaining)}</h1>
         {
             !isRunning?
